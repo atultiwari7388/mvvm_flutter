@@ -1,4 +1,5 @@
-# mvvm_practice
+# mvvm_flutter
+
 
 A new Flutter project.
 

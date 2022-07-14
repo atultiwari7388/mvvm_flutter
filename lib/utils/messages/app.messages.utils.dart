@@ -9,40 +9,22 @@ class AppMessages {
     Fluttertoast.showToast(msg: message);
   }
 
-  //Error Message
-  static void errorMessage(BuildContext context, String message) {
+  //flushBar Message
+  static void flushBarMessage(
+      BuildContext context, String message, Color color, IconData icon) {
     showFlushbar(
       context: context,
       flushbar: Flushbar(
         forwardAnimationCurve: Curves.bounceIn,
         reverseAnimationCurve: Curves.easeInBack,
-        icon: const Icon(Icons.error, color: Colors.white),
+        icon: Icon(icon, color: Colors.white),
         margin: const EdgeInsets.all(8.0),
         message: message,
-        backgroundColor: Colors.red,
+        backgroundColor: color,
         borderRadius: BorderRadius.circular(10),
         positionOffset: 20,
         flushbarPosition: FlushbarPosition.TOP,
-        duration: const Duration(seconds: 3),
-      )..show(context),
-    );
-  }
-
-  //Success Message
-  static void successMessage(BuildContext context, String message) {
-    showFlushbar(
-      context: context,
-      flushbar: Flushbar(
-        forwardAnimationCurve: Curves.bounceIn,
-        reverseAnimationCurve: Curves.easeInBack,
-        icon: const Icon(Icons.done, color: Colors.white),
-        margin: const EdgeInsets.all(8.0),
-        message: message,
-        backgroundColor: Colors.green,
-        borderRadius: BorderRadius.circular(10),
-        positionOffset: 20,
-        flushbarPosition: FlushbarPosition.TOP,
-        duration: const Duration(seconds: 3),
+        duration: const Duration(microseconds: 1000),
       )..show(context),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm_practice/utils/routes/app_routes.routes.utils.dart';
+import 'package:mvvm_practice/utils/routes/routes_name.routes.utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,13 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Flutter MVVM"),
-          elevation: 1.0,
-          centerTitle: true,
-        ),
-      ),
+      initialRoute: RoutesName.login,
+      onGenerateRoute: AppRoutes.onGenerateRoutes,
     );
   }
 }

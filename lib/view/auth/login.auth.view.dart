@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_practice/utils/routes/routes_name.routes.utils.dart';
+import 'package:mvvm_practice/utils/messages/app.messages.utils.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _LoginViewState extends State<LoginView> {
           ),
           const SizedBox(height: 40),
           InkWell(
-            onTap: () => Navigator.pushNamed(context, RoutesName.home),
+            onTap: () => AppMessages.toastMessage("message"),
             child: const Center(
               child: Text("Go to home Page"),
             ),

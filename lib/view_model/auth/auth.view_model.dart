@@ -16,25 +16,44 @@ class AuthViewModel with ChangeNotifier {
 
   Future<void> loginUser(dynamic data, BuildContext context) async {
     setLoading(true);
-    _authRepo.userLogin(data).then(
-      (value) {
-        setLoading(false);
-        AppMessages.flushBarMessage(
-            context, "Yay ! Login Successfully 😊", Colors.green, Icons.done);
-        Navigator.pushNamed(context, RoutesName.home);
-        if (kDebugMode) {
-          print(value.toString());
-        }
-      },
-    ).onError(
-      (error, stackTrace) {
-        setLoading(false);
-        AppMessages.flushBarMessage(context,
-            "Ohh snap ! something went wrong 😔", Colors.red, Icons.error);
-        if (kDebugMode) {
-          print(error.toString());
-        }
-      },
-    );
+    _authRepo.userLogin(data).then((value) {
+      setLoading(false);
+      AppMessages.flushBarMessage(
+          context, "Yay ! Login Successfully 😊", Colors.green, Icons.done);
+      Navigator.pushNamed(context, RoutesName.home);
+      if (kDebugMode) {
+        print(value.toString());
+      }
+    }).onError((error, stackTrace) {
+      setLoading(false);
+      AppMessages.flushBarMessage(context, "Ohh snap ! something went wrong 😔",
+          Colors.red, Icons.error);
+      if (kDebugMode) {
+        print(error.toString());
+      }
+    });
+  }
+
+  Future<void> registerUser(dynamic data, BuildContext context) async {
+    setLoading(true);
+    _authRepo.userRegister(data).then((value) {
+      setLoading(false);
+      AppMessages.flushBarMessage(
+          context,
+          "Yay ! Your account created Successfully 😊",
+          Colors.green,
+          Icons.done);
+      Navigator.pushNamed(context, RoutesName.home);
+      if (kDebugMode) {
+        print(value.toString());
+      }
+    }).onError((error, stackTrace) {
+      setLoading(true);
+      AppMessages.flushBarMessage(context, "Ohh snap ! something went wrong 😔",
+          Colors.red, Icons.error);
+      if (kDebugMode) {
+        print(error.toString());
+      }
+    });
   }
 }

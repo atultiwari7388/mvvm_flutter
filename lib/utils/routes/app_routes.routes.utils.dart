@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_practice/utils/routes/routes_name.routes.utils.dart';
 import 'package:mvvm_practice/view/auth/login.auth.view.dart';
+import 'package:mvvm_practice/view/auth/register.auth.view.dart';
 import 'package:mvvm_practice/view/home/home.home.view.dart';
 
 class AppRoutes {
@@ -16,6 +17,12 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (context) => const LoginView(),
+        );
+
+      case RoutesName.register:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => const RegisterView(),
         );
 
       default:

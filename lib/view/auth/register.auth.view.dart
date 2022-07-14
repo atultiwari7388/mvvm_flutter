@@ -1,20 +1,20 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm_practice/utils/messages/app.messages.utils.dart';
-import 'package:mvvm_practice/utils/routes/routes_name.routes.utils.dart';
 import 'package:mvvm_practice/view_model/auth/auth.view_model.dart';
 import 'package:provider/provider.dart';
 import '../../resources/components/round_button.components.resources.dart';
 import '../../utils/app.utils.dart';
+import '../../utils/routes/routes_name.routes.utils.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatefulWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegisterView> createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterViewState extends State<RegisterView> {
   final ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -83,9 +83,9 @@ class _LoginViewState extends State<LoginView> {
                   );
                 },
               ),
-              const SizedBox(height: 40.0),
+              const SizedBox(height: 50.0),
               RoundButton(
-                text: "Login",
+                text: "Register",
                 loading: authViewModel.loading,
                 onPressed: () {
                   if (_emailController.text.isEmpty &&
@@ -106,7 +106,7 @@ class _LoginViewState extends State<LoginView> {
                       "email": _emailController.text.toString(),
                       "password": _passwordController.text.toString(),
                     };
-                    authViewModel.loginUser(data, context);
+                    authViewModel.registerUser(data, context);
                     if (kDebugMode) {
                       print("hit api");
                     }
@@ -115,14 +115,14 @@ class _LoginViewState extends State<LoginView> {
               ),
               const SizedBox(height: 50.0),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, RoutesName.register),
+                onTap: () => Navigator.pushNamed(context, RoutesName.login),
                 child: RichText(
                   text: const TextSpan(
-                    text: "Don't have an account ? ",
+                    text: "Already have an account ? ",
                     style: TextStyle(color: Colors.black, fontSize: 17.0),
                     children: [
                       TextSpan(
-                        text: "Register now",
+                        text: "Login ",
                         style: TextStyle(
                           color: Colors.blue,
                           fontSize: 15.0,

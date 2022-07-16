@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_practice/data/response/status.response.data.dart';
-import 'package:mvvm_practice/models/ListOfUsers.model.dart';
-import 'package:mvvm_practice/view_model/User/user_viewmodel.user.view_model.dart';
 import 'package:mvvm_practice/view_model/home/home_view_model.home.view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +21,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final userViewModel = Provider.of<UserViewModel>(context);
+    // final userViewModel = Provider.of<UserViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home Screen"),
@@ -34,7 +32,7 @@ class _HomeViewState extends State<HomeView> {
         create: (BuildContext context) => homeViewModel,
         child: Consumer<HomeViewModel>(
           builder: (context, value, _) {
-            switch (value.userResponse.apiStatus) {
+            switch (value.userResponse.apiStatus!) {
               case ApiStatus.loading:
                 return const Center(
                   child: CircularProgressIndicator(),
@@ -68,7 +66,7 @@ class _HomeViewState extends State<HomeView> {
                 );
             }
 
-            return Container();
+            // return Container();
           },
         ),
       ),

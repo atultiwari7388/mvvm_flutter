@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:mvvm_practice/models/UserModel.dart';
 import 'package:mvvm_practice/repository/auth/auth.repository.dart';
 import 'package:mvvm_practice/utils/messages/app.messages.utils.dart';
 import 'package:mvvm_practice/utils/routes/routes_name.routes.utils.dart';
+import 'package:mvvm_practice/view/Services/splash.services.view.dart';
+import 'package:mvvm_practice/view_model/User/user_viewmodel.user.view_model.dart';
+import 'package:provider/provider.dart';
 
 class AuthViewModel with ChangeNotifier {
   final _authRepo = AuthRepository();
@@ -18,6 +22,12 @@ class AuthViewModel with ChangeNotifier {
     setLoading(true);
     _authRepo.userLogin(data).then((value) {
       setLoading(false);
+      final userPref = Provider.of<UserViewModel>(context, listen: false);
+      userPref.saveUserData(
+        UserModel(
+          token: value['token'].toString(),
+        ),
+      );
       AppMessages.flushBarMessage(
           context, "Yay ! Login Successfully 😊", Colors.green, Icons.done);
       Navigator.pushNamed(context, RoutesName.home);

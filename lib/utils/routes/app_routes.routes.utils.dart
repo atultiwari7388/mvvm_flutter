@@ -3,10 +3,16 @@ import 'package:mvvm_practice/utils/routes/routes_name.routes.utils.dart';
 import 'package:mvvm_practice/view/auth/login.auth.view.dart';
 import 'package:mvvm_practice/view/auth/register.auth.view.dart';
 import 'package:mvvm_practice/view/home/home.home.view.dart';
+import 'package:mvvm_practice/view/splash/splash_view.splash.view.dart';
 
 class AppRoutes {
   static Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
+      case RoutesName.splash:
+        return MaterialPageRoute(
+          builder: (context) => const SplashView(),
+        );
+
       case RoutesName.home:
         return MaterialPageRoute(
           settings: settings,

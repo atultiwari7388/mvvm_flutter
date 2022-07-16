@@ -8,8 +8,8 @@ class ApiResponse<T> {
   ApiResponse(this.apiStatus, this.data, this.message);
 
   ApiResponse.loading() : apiStatus = ApiStatus.loading;
-  ApiResponse.success() : apiStatus = ApiStatus.success;
-  ApiResponse.error() : apiStatus = ApiStatus.error;
+  ApiResponse.success(this.data) : apiStatus = ApiStatus.success;
+  ApiResponse.error(this.message) : apiStatus = ApiStatus.error;
 
   @override
   String toString() {
